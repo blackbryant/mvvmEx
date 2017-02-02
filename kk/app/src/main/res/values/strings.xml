@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">MVVM</string>
+    <string name="str_register">註冊畫面</string>
+    <string name="str_loginID">登入帳號</string>
+    <string name="str_id">登入帳號</string>
+    <string name="str_password">密碼</string>
+    <string name="str_name">姓名</string>
+    <string name="str_age">年紀</string>
+    <string name="str_btn_register">註冊</string>
+
+</resources>
