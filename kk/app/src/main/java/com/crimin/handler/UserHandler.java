@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.crimin.ViewModel.UserViewModel;
 import com.crimin.bryant.kk.FormActivity;
+import com.crimin.bryant.kk.SuccessActivity;
 
 /**
  * Created by bryant on 2016/12/28.
@@ -27,8 +28,10 @@ public class UserHandler {
         Log.d("AAA", "onClickLogin: "+ userVM.getPassword());
         if(userVM.getId().equals("")|| userVM.getPassword().equals("")  ){
             Toast.makeText(view.getContext(), "帳號/密碼錯誤",Toast.LENGTH_SHORT).show(); ;
+        }else {
+            Intent i = SuccessActivity.newIntent(this.context);
+            this.context.startActivity(i);
         }
-
     }
 
     public void onClickRegister(View view){

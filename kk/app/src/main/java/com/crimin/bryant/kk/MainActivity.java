@@ -21,7 +21,5 @@ public class MainActivity extends AppCompatActivity {
         viewModel.setPassword("");
         binding.setUser(viewModel);
         binding.setUserHandler(userHandler);
-
-
     }
 }
