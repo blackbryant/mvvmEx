@@ -4,10 +4,10 @@ package com.crimin;
  * Created by bryant on 2016/12/28.
  */
 public class FormUtil {
-    public static String ID_EXPRESSION = "^(?=.*\\d).{6,30}$";
+    public static String ID_EXPRESSION = "\\d{6,}";
 
     public boolean checkPassword(String password){
-        if(password.contains(ID_EXPRESSION)){
+        if(password.matches(ID_EXPRESSION)){
             return true ;
         }
         return false ;

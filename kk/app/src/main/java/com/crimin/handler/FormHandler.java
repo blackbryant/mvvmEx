@@ -10,7 +10,7 @@ import com.crimin.ViewModel.FormViewModel;
  * Created by bryant on 2016/12/28.
  */
 public class FormHandler {
-
+    private static String appid = FormHandler.class.getName() ;
     private FormViewModel formViewModel ;
     private  Context context ;
     public FormHandler(Context context, FormViewModel formViewModel){
@@ -19,14 +19,14 @@ public class FormHandler {
     }
 
     public void addNewOne(View view){
-        Log.d("AAA", "addNewOne: "+formViewModel);
-        Log.d("AAA", "addNewOne: "+formViewModel.getId());
-        Log.d("AAA", "addNewOne: "+ formViewModel.getPassword());
+        Log.d(appid, "addNewOne: "+formViewModel);
+        Log.d(appid, "addNewOne: "+formViewModel.getId());
+        Log.d(appid, "addNewOne: "+ formViewModel.getPassword());
         String message = "id:"+formViewModel.getId()+"\r\n"+
                         "password:"+formViewModel.getPassword()+"\r\n"+
                         "name:"+formViewModel.getName()+"\r\n"+
                         "age:"+formViewModel.getAge()+"\r\n";
-        Log.d("AAA", "addNewOne: "+message);
+        Log.d(appid, "addNewOne: "+message);
         formViewModel.setMessage(message);
 
     }

@@ -19,6 +19,7 @@ import com.crimin.bryant.kk.BR;
 
 
 public   class FormViewModel extends BaseObservable{
+    private static String appid = FormViewModel.class.getName() ;
     public final ObservableField<String> name = new   ObservableField<>();
     public final ObservableField<String> id = new ObservableField<>() ;
     public final ObservableField<String> password = new ObservableField<>() ;
@@ -63,7 +64,7 @@ public   class FormViewModel extends BaseObservable{
     @Bindable
     public String getNameError(){
         if(this.name.get()==null|| this.name.get().isEmpty() ){
-            Log.d("AAA", "getNameError: "+"");
+            Log.d(appid, "getNameError: "+"");
             return  "姓名必填" ;
         }
         return null ;
@@ -72,7 +73,7 @@ public   class FormViewModel extends BaseObservable{
     @Bindable
     public String getIdError(){
         if(this.id.get()==null|| this.id.get().isEmpty() ){
-            Log.d("AAA", "getIdError: "+"");
+
             return  "身分證必填" ;
         }
         return null ;
@@ -80,12 +81,17 @@ public   class FormViewModel extends BaseObservable{
 
     @Bindable
     public String getPasswordError(){
-        if(util.checkPassword(this.password.toString())){
-            return  "密碼全部逼需是數字" ;
+        if(this.password.get()==null|| this.password.get().isEmpty()) {
+            Log.d(appid, "getIdError: " + "");
+            return "密碼必填";
         }
+        if(!util.checkPassword(this.password.get())){
+            return  "密碼全部需是數字且必須超過六位數" ;
+         }
         return null ;
     }
 
+    @Bindable
     public String getAgeError(){
         if(util.checkAgeGreaterThanTeenage(this.age.get())){
             return  "申請必須超過18歲" ;
@@ -108,7 +114,7 @@ public   class FormViewModel extends BaseObservable{
 
             @Override
             public void afterTextChanged(Editable s) {
-                Log.d("AAA", "afterTextChanged: "+s);
+                Log.d(appid, "afterTextChanged: "+s);
 
             }
         };
@@ -149,7 +155,7 @@ public   class FormViewModel extends BaseObservable{
 
             @Override
             public void afterTextChanged(Editable s) {
-
+                Log.d(appid, "afterTextChanged: "+s);
             }
         };
         return watch ;
@@ -177,9 +183,6 @@ public   class FormViewModel extends BaseObservable{
 
 
 
-
-
-
     public void setPassword(String password) {
         this.password.set(password);
         notifyPropertyChanged(BR.password);
@@ -197,9 +200,29 @@ public   class FormViewModel extends BaseObservable{
                 }
             }
         };
-
-
     }
+
+    public TextWatcher passwordWatcher(){
+        TextWatcher watch = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                password.set(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                Log.d(appid, "afterTextChanged: "+s);
+            }
+        };
+        return watch ;
+    }
+
+
 
 
     public void setAge(String  age){
