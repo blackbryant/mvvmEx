@@ -14,7 +14,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main) ;
-
         UserViewModel viewModel = new UserViewModel(this) ;
         UserHandler userHandler = new UserHandler(this,viewModel);
         viewModel.setId("");

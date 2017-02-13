@@ -12,9 +12,9 @@ import com.crimin.bryant.kk.databinding.ActivityFormBinding;
 
 
 public class FormActivity extends AppCompatActivity {
-
+    private static String appid = FormActivity.class.getName();
     public static Intent newIntent(Context context){
-        Log.d("AAA", "newIntent: "+"bbb");
+        Log.d(appid, "newIntent: "+"bbb");
         Intent i = new Intent(context.getApplicationContext(),FormActivity.class) ;
         return i;
     }
@@ -27,7 +27,6 @@ public class FormActivity extends AppCompatActivity {
 
         FormViewModel viewModel = new FormViewModel(this) ;
         binding.setForm(viewModel) ;
-
 
     }
 }

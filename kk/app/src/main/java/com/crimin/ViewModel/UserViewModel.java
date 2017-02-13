@@ -13,11 +13,12 @@ import com.crimin.bryant.kk.BR;
 
 
 public   class UserViewModel extends BaseObservable{
+    private static String Appid = UserViewModel.class.getName();
     private String id ="";
     private String password="";
-
-
     private Context context ;
+
+
     public  UserViewModel(Context context){
         this.context = context;
 
@@ -35,7 +36,7 @@ public   class UserViewModel extends BaseObservable{
 
     public void setId(String id) {
         this.id = id;
-        Log.d("AAA", "setId: "+id);
+        Log.d(Appid, "setId: "+id);
         notifyPropertyChanged(BR.id);
     }
 
@@ -43,14 +44,8 @@ public   class UserViewModel extends BaseObservable{
 
     public void setPassword(String password) {
         this.password = password;
-        Log.d("AAA", "setId: "+password);
+        Log.d(Appid, "setId: "+password);
         notifyPropertyChanged(BR.password);
 
     }
-
-
-
-
-
-
 }

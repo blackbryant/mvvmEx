@@ -4,7 +4,6 @@ package com.crimin.model;
  * Created by bryant on 2016/12/27.
  */
 public class User {
-
     private String id ;
     private String password;
 
