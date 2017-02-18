@@ -16,6 +16,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".FormActivity"></activity>
+        <activity android:name=".SuccessActivity"></activity>
     </application>
 
 </manifest>

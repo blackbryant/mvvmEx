@@ -31,35 +31,12 @@ public   class FormViewModel extends BaseObservable{
     private Context context ;
     public  FormViewModel(Context context){
         this.context = context;
-
     }
-
 
     @Bindable
     public String getName(){
         return this.name.get() ;
     }
-
-    @Bindable
-    public String getId(){
-        return this.id.get();
-    }
-
-    @Bindable
-    public String getPassword(){
-        return this.password.get() ;
-    }
-
-    @Bindable
-    public  String getAge(){
-        return this.age.get();
-    }
-
-    @Bindable
-    public  String getMessage(){
-            return this.message.get();
-    }
-
 
     @Bindable
     public String getNameError(){
@@ -70,38 +47,8 @@ public   class FormViewModel extends BaseObservable{
         return null ;
     }
 
-    @Bindable
-    public String getIdError(){
-        if(this.id.get()==null|| this.id.get().isEmpty() ){
-
-            return  "身分證必填" ;
-        }
-        return null ;
-    }
-
-    @Bindable
-    public String getPasswordError(){
-        if(this.password.get()==null|| this.password.get().isEmpty()) {
-            Log.d(appid, "getIdError: " + "");
-            return "密碼必填";
-        }
-        if(!util.checkPassword(this.password.get())){
-            return  "密碼全部需是數字且必須超過六位數" ;
-         }
-        return null ;
-    }
-
-    @Bindable
-    public String getAgeError(){
-        if(util.checkAgeGreaterThanTeenage(this.age.get())){
-            return  "申請必須超過18歲" ;
-        }
-        return null ;
-    }
-
-
     public TextWatcher nameWatcher() {
-       TextWatcher nameWatcher=  new TextWatcher() {
+        TextWatcher nameWatcher=  new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -132,14 +79,27 @@ public   class FormViewModel extends BaseObservable{
                 }
             }
         };
-
-
     }
 
     public  void setName(String name){
         this.name.set(name);
     }
 
+
+
+    @Bindable
+    public String getId(){
+        return this.id.get();
+    }
+
+    @Bindable
+    public String getIdError(){
+        if(this.id.get()==null|| this.id.get().isEmpty() ){
+
+            return  "身分證必填" ;
+        }
+        return null ;
+    }
 
     public TextWatcher idWatcher(){
         TextWatcher watch = new TextWatcher() {
@@ -174,20 +134,21 @@ public   class FormViewModel extends BaseObservable{
         };
     }
 
-
-
     public void setId(String id) {
         this.id.set(id);
         notifyPropertyChanged(BR.id);
     }
 
 
+    @Bindable
+    public String getPassword(){
+        return this.password.get() ;
+    }
 
     public void setPassword(String password) {
         this.password.set(password);
         notifyPropertyChanged(BR.password);
     }
-
 
     public EditText.OnFocusChangeListener passwordFocusChangeListener(){
         return new View.OnFocusChangeListener(
@@ -223,11 +184,46 @@ public   class FormViewModel extends BaseObservable{
     }
 
 
+    @Bindable
+    public String getPasswordError(){
+        if(this.password.get()==null|| this.password.get().isEmpty()) {
+            Log.d(appid, "getIdError: " + "");
+            return "密碼必填";
+        }
+        if(!util.checkPassword(this.password.get())){
+            return  "密碼全部需是數字且必須超過六位數" ;
+        }
+        return null ;
+    }
+
+
+
+
+    @Bindable
+    public  String getAge(){
+        return this.age.get();
+    }
+
+
+    @Bindable
+    public String getAgeError(){
+        if(util.checkAgeGreaterThanTeenage(this.age.get())){
+            return  "申請必須超過18歲" ;
+        }
+        return null ;
+    }
+
 
 
     public void setAge(String  age){
         this.age.set(age);
         notifyPropertyChanged(BR.age);
+    }
+
+
+    @Bindable
+    public  String getMessage(){
+            return this.message.get();
     }
 
     public  void setMessage(String message){
