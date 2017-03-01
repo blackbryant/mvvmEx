@@ -19,14 +19,11 @@ public class FormActivity extends AppCompatActivity {
         return i;
     }
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActivityFormBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_form) ;
-
         FormViewModel viewModel = new FormViewModel(this) ;
         binding.setForm(viewModel) ;
-
     }
 }
